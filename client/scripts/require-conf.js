@@ -77,6 +77,8 @@
     'ngDefine':              vendor +'/requirejs-angular-define/src/ngDefine',
     'ngParse':               vendor +'/requirejs-angular-define/src/ngParse',
     'domReady':              vendor +'/requirejs-domready/index',
+    'text':                  vendor +'/requirejs-text/text',
+
     'jquery-mousewheel':     vendor +'/jquery-mousewheel/index',
     'jquery-overscroll':     vendor +'/jquery-overscroll-fixed/index',
 
