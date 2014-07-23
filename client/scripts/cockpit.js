@@ -32,7 +32,6 @@
     'camunda-commons-ui/util/index',
 
     'module:camunda.common.directives:camunda-commons-ui/directives/main',
-    'module:camunda.common.extensions:camunda-commons-ui/extensions/main',
     'module:camunda.common.services:camunda-commons-ui/services/main',
     'module:camunda.common.pages:camunda-commons-ui/pages/main' ];
 

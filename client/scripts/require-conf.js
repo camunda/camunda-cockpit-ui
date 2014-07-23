@@ -14,7 +14,7 @@
  */
 
 /**
- * @namespace cam.common
+ * @namespace cam.cockpit
  */
 (function(factory) {
   'use strict';
@@ -22,6 +22,7 @@
     module.exports = factory();
   }
   else {
+    /* global define: false */
     define([], factory);
   }
 }(function() {
@@ -150,6 +151,11 @@
       name: 'cockpit',
       location: '.',
       main: 'cockpit'
+    },
+    {
+      name: 'camunda-commons-ui',
+      location: './'+ vendor +'/camunda-commons-ui/lib',
+      main: 'index'
     },
     {
       name: 'bpmn',
