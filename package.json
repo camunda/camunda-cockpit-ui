@@ -1,6 +1,6 @@
 {
   "name": "camunda-cockpit-ui",
-  "version": "7.2.1",
+  "version": "7.2.2-SNAPSHOT",
   "private": true,
   "gruntConfig": {
     "connectPort": 8030,
