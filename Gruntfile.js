@@ -28,12 +28,6 @@ module.exports = function(grunt) {
 
     pkg:              pkg,
 
-    bower:            require('camunda-commons-ui/grunt/config/bower')(config),
-
-    jasmine_node:     require('camunda-commons-ui/grunt/config/jasmine_node')(config),
-
-    karma:            require('camunda-commons-ui/grunt/config/karma')(config),
-
     requirejs:        require('./grunt/config/requirejs')(config),
 
     less:             require('camunda-commons-ui/grunt/config/less')(config),
@@ -41,8 +35,6 @@ module.exports = function(grunt) {
     copy:             require('./grunt/config/copy')(config),
 
     watch:            require('./grunt/config/watch')(config),
-
-    connect:          require('camunda-commons-ui/grunt/config/connect')(config),
 
     jsdoc:            require('camunda-commons-ui/grunt/config/jsdoc')(config),
 
@@ -68,9 +60,6 @@ module.exports = function(grunt) {
 
     var tasks = [
       'clean',
-//       'jshint',
-//       'jsdoc',
-      'bower',
       'copy',
       'less',
       'requirejs'

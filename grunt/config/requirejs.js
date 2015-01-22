@@ -1,60 +1,77 @@
 module.exports = function(config) {
   'use strict';
-  var _ = require('underscore');
-  var path = require('path');
   var grunt = config.grunt;
-  var rjsConfPath = path.resolve('./client/scripts/require-conf');
-  var rjsConf = require(rjsConfPath);
+  var commons = require('camunda-commons-ui');
+  var _ = commons.utils._;
+  var rjsConf = commons.requirejs();
 
   var deps = [
-    'scripts/require-conf',
-    './../node_modules/requirejs/require',
     'jquery',
-    'angular',
-    //'moment',
-    'angular-bootstrap',
-    'angular-route',
-    'angular-animate',
+    'requirejs',
     'camunda-commons-ui',
-    //'angular-moment',
-    'angular-resource',
-    'angular-sanitize',
-    'angular-ui',
     'ngDefine',
-    'jquery-ui/ui/jquery.ui.draggable',
-    'domReady!',
+    'jquery-ui-draggable',
     'bpmn',
-    'bpmn/Bpmn',
-    'bpmn/Transformer',
-    'dojo',
-    'dojox/gfx',
-    'angular-data-depend'
+    'domReady'
   ];
-
-  _.extend(rjsConf.paths, {
-    'require-conf': 'scripts/require-conf',
-    'cockpit/util/routeUtil': 'scripts/util/routeUtil',
-    //'bpmn': 'empty:',
-    //'bpmn/Bpmn': 'empty:',
-    'dojox/gfx': 'empty:',
-    'cockpit-plugin-base': 'plugin'
-  });
-
 
   var rConf = {
     options: {
-      //stubModules: ['text'],
+      stubModules: ['text'],
 
       optimize: '<%= (buildTarget === "dist" ? "uglify2" : "none") %>',
       preserveLicenseComments: false,
       generateSourceMaps: true,
 
       baseUrl: './<%= pkg.gruntConfig.clientDir %>',
-      // baseUrl: config.clientDir,
 
-      paths: rjsConf.paths,
-      shim: rjsConf.shim,
-      packages: rjsConf.packages
+      paths: _.extend(rjsConf.paths, {
+        'camunda-cockpit-ui': 'scripts/camunda-cockpit-ui'
+      }),
+
+      shim: _.extend(rjsConf.shim, {}),
+
+      packages: rjsConf.packages.concat([
+        {
+          name: 'bpmn',
+          location : '../node_modules/camunda-bpmn.js/src/bpmn',
+          main: 'Bpmn'
+        },
+        {
+          name: 'dojo',
+          location : 'vendor/dojo/dojo'
+        },
+        {
+          name: 'dojox',
+          location : 'vendor/dojo/dojox'
+        },
+
+        {
+          name: 'services',
+          location: './scripts/services',
+        },
+        {
+          name: 'pages',
+          location: './scripts/pages',
+        },
+        {
+          name: 'directives',
+          location: './scripts/directives',
+        },
+        {
+          name: 'filters',
+          location: './scripts/filters',
+        },
+        {
+          name: 'resources',
+          location: './scripts/resources',
+        },
+        {
+          name: 'util',
+          location: './scripts/util',
+          main: 'routeUtil'
+        }
+      ])
     },
 
 
@@ -69,10 +86,10 @@ module.exports = function(config) {
 
     scripts: {
       options: {
-        name: 'camunda-cockpit',
+        name: '<%= pkg.name %>',
         out: '<%= buildTarget %>/scripts/<%= pkg.name %>.js',
         exclude: deps,
-        include: rjsConf.shim['camunda-cockpit'],
+        include: [],
 
         onModuleBundleComplete: function (data) {
           var buildTarget = grunt.config('buildTarget');
