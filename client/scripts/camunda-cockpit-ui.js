@@ -1,16 +1,15 @@
 define([
-  // 'jquery',
-  // 'angular',
   './directives/main',
   './filters/main',
   './pages/main',
   './resources/main',
   './services/main',
   'camunda-commons-ui',
-  'angular-resource'
+  'angular-resource',
+  'angular-sanitize',
+  'angular-ui',
+  'ngDefine'
 ], function (
-  // $,
-  // angular,
   directives,
   filters,
   pages,
@@ -52,8 +51,13 @@ define([
 
 
 
-    var ModuleConfig = [ '$routeProvider', 'UriProvider', function($routeProvider, UriProvider) {
-
+    var ModuleConfig = [
+      '$routeProvider',
+      'UriProvider',
+    function(
+      $routeProvider,
+      UriProvider
+    ) {
       $routeProvider.otherwise({ redirectTo: '/dashboard' });
 
       function getUri(id) {
@@ -87,8 +91,8 @@ define([
 
     appNgModule.config(ModuleConfig);
 
-    require([,
-      'domReady'
+    require([
+      'domReady!'
     ], function () {
       angular.bootstrap(document, [ appNgModule.name ]);
       var html = document.getElementsByTagName('html')[0];

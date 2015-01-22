@@ -6,12 +6,12 @@ module.exports = function(config) {
   var rjsConf = commons.requirejs();
 
   var deps = [
-    // 'jquery',
     'requirejs',
-    'camunda-commons-ui',
+    'angular',
+    'angular-resource',
+    'angular-sanitize',
+    'angular-ui',
     'ngDefine',
-    'jquery-ui-draggable',
-    'bpmn',
     'domReady'
   ];
 
