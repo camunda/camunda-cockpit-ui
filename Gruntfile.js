@@ -10,6 +10,7 @@
 
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
+  var commons = require('camunda-commons-ui');
 
   var pkg = require('./package.json');
 
@@ -36,8 +37,6 @@ module.exports = function(grunt) {
 
     watch:            require('./grunt/config/watch')(config),
 
-    jsdoc:            require('camunda-commons-ui/grunt/config/jsdoc')(config),
-
     jshint:           require('camunda-commons-ui/grunt/config/jshint')(config),
 
     changelog:        require('camunda-commons-ui/grunt/config/changelog')(config),
@@ -45,28 +44,7 @@ module.exports = function(grunt) {
     clean:            require('camunda-commons-ui/grunt/config/clean')(config)
   });
 
-  grunt.registerTask('build', function(mode) {
-    mode = mode || 'prod';
-
-    grunt.config.data.buildTarget = (mode === 'prod' ? config.prodTarget : config.devTarget);
-    grunt.log.subhead('Will build the "'+ pkg.name +'" project in "'+ mode +'" mode and place it in "'+ grunt.config('buildTarget') +'"');
-    if (mode === 'dev') {
-      grunt.log.writeln('Will serve on port "'+
-        config.connectPort +
-        '" and liverreload available on port "'+
-        config.livereloadPort +
-        '"');
-    }
-
-    var tasks = [
-      'clean',
-      'copy',
-      'less',
-      'requirejs'
-    ];
-
-    grunt.task.run(tasks);
-  });
+  grunt.registerTask('build', commons.builder(grunt));
 
 
   grunt.registerTask('auto-build', [
