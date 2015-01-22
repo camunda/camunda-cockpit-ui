@@ -26,6 +26,7 @@ module.exports = function(config) {
       baseUrl: './<%= pkg.gruntConfig.clientDir %>',
 
       paths: _.extend(rjsConf.paths, {
+        'cockpit':            'scripts',
         'camunda-cockpit-ui': 'scripts/camunda-cockpit-ui'
       }),
 
