@@ -6,7 +6,7 @@ module.exports = function(config) {
   var rjsConf = commons.requirejs();
 
   var deps = [
-    'jquery',
+    // 'jquery',
     'requirejs',
     'camunda-commons-ui',
     'ngDefine',
@@ -30,7 +30,8 @@ module.exports = function(config) {
         'camunda-cockpit-ui': 'scripts/camunda-cockpit-ui'
       }),
 
-      shim: _.extend(rjsConf.shim, {}),
+      shim: _.extend(rjsConf.shim, {
+      }),
 
       packages: rjsConf.packages.concat([
         {
