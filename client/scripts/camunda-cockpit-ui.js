@@ -10,7 +10,8 @@ define([
   'camunda-commons-ui',
   'angular-resource',
   'angular-sanitize',
-  'angular-ui',
+  'angular-route',
+  'angular-bootstrap',
   'ngDefine'
 ], function () {
   var APP_NAME = 'cam.cockpit';

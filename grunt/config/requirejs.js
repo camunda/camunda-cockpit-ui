@@ -10,7 +10,8 @@ module.exports = function(config) {
     'angular',
     'angular-resource',
     'angular-sanitize',
-    'angular-ui',
+    // 'angular-ui',
+    'angular-bootstrap',
     'ngDefine',
     'domReady'
   ];
