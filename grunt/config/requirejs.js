@@ -93,20 +93,7 @@ module.exports = function(config) {
         exclude: deps,
         include: [],
 
-        onModuleBundleComplete: function (data) {
-          var buildTarget = grunt.config('buildTarget');
-          var livereloadPort = grunt.config('pkg.gruntConfig.livereloadPort');
-          if (buildTarget !== 'dist' && livereloadPort) {
-            grunt.log.writeln('Enabling livereload for ' + data.name + ' on port: ' + livereloadPort);
-            var contents = grunt.file.read(data.path);
-
-            contents = contents
-                        .replace(/\/\* live-reload/, '/* live-reload */')
-                        .replace(/LIVERELOAD_PORT/g, livereloadPort);
-
-            grunt.file.write(data.path, contents);
-          }
-        }
+        onModuleBundleComplete: commons.livereloadSnippet(grunt)
       }
     }
   };

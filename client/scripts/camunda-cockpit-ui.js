@@ -1,3 +1,6 @@
+/* jshint browser: true */
+/* global define: false*/
+'use strict';
 define([
   './directives/main',
   './filters/main',
@@ -9,15 +12,7 @@ define([
   'angular-sanitize',
   'angular-ui',
   'ngDefine'
-], function (
-  directives,
-  filters,
-  pages,
-  resources,
-  services
-) {
-  var baseUrl = document.getElementsByTagName('base')[0].getAttribute('app-root') +'/';
-
+], function () {
   var APP_NAME = 'cam.cockpit';
 
   var pluginPackages = window.PLUGIN_PACKAGES || [];
@@ -38,18 +33,23 @@ define([
 
 
   require(dependencies, function() {
+
     var ngDependencies = [
-      require('camunda-commons-ui').name,
       'ng',
       'ngResource',
-      'ui.bootstrap'
+      require('camunda-commons-ui').name,
+      require('./directives/main').name,
+      require('./filters/main').name,
+      require('./pages/main').name,
+      require('./resources/main').name,
+      require('./services/main').name
     ].concat(pluginDependencies.map(function(el){
       return el.ngModuleName;
     }));
 
+    var angular = require('angular');
+    var $ = require('jquery');
     var appNgModule = angular.module(APP_NAME, ngDependencies);
-
-
 
     var ModuleConfig = [
       '$routeProvider',
