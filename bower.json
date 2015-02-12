@@ -28,33 +28,33 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.16",
-    "angular-animate": "~1.2.16",
-    "angular-bootstrap": "~0.11.0",
-    "angular-cookies": "~1.2.16",
-    "angular-data-depend": "camunda/angular-data-depend",
-    "angular-resource": "~1.2.16",
-    "angular-route": "~1.2.16",
-    "angular-sanitize": "~1.2.16",
-    "angular-ui": "~0.4.0",
+    "angular": "1.2.16",
+    "angular-animate": "1.2.16",
+    "angular-bootstrap": "0.11.0",
+    "angular-cookies": "1.2.16",
+    "angular-data-depend": "camunda/angular-data-depend#92ebf30c5c48577e570eaf18ec8f1cfeb2b21d8a",
+    "angular-resource": "1.2.16",
+    "angular-route": "1.2.16",
+    "angular-sanitize": "1.2.16",
+    "angular-ui": "0.4.0",
     "better-dom": "1.6.6",
     "better-placeholder-polyfill": "1.1.1",
-    "bootstrap": "~3.1.1",
-    "camunda-bpmn.js": "camunda/camunda-bpmn.js",
+    "bootstrap": "3.1.1",
+    "camunda-bpmn.js": "camunda/camunda-bpmn.js#8428718423920dfceae63f03c3b521a00e134fe9",
     "camunda-commons-ui": "./node_modules/camunda-commons-ui",
-    "jquery": "~2.1.1",
+    "jquery": "2.1.1",
     "jquery-mousewheel": "https://raw.github.com/brandonaaron/jquery-mousewheel/09bb82c73c5650812e36dfd27d605d64d3ed32b8/jquery.mousewheel.js",
     "jquery-overscroll-fixed": "https://raw.github.com/azoff/overscroll/1579345a5d7cf2601a290e64d04aaa2a22449cac/src/jquery.overscroll.js",
-    "requirejs-angular-define": "camunda/requirejs-angular-define",
+    "requirejs-angular-define": "camunda/requirejs-angular-define#aaa450a66e4d1a0588819804e1098c541bed585d",
     "requirejs-domready": "http://cdnjs.cloudflare.com/ajax/libs/require-domReady/2.0.1/domReady.min.js",
-    "requirejs-text": "~2.0.12",
-    "bootstrap": "~3.1.1",
-    "angular": "~1.2.16",
-    "jquery": "~2.1.0",
-    "jquery.ui": "~1.10.4"
+    "requirejs-text": "2.0.12",
+    "bootstrap": "3.1.1",
+    "angular": "1.2.16",
+    "jquery": "2.1.0",
+    "jquery.ui": "1.10.4"
   },
   "devDependencies": {
-    "angular-mocks": "~1.2.16",
-    "angular-scenario": "~1.2.16"
+    "angular-mocks": "1.2.16",
+    "angular-scenario": "1.2.16"
   }
 }
