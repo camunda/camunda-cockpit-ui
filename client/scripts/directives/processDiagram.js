@@ -68,7 +68,6 @@ define([
     };
 
     $scope.onMouseEnter = function(element, $event) {
-      console.log($scope.selectAll);
       if(bpmnElements[element.businessObject.id] && isElementSelectable(bpmnElements[element.businessObject.id])) {
         $scope.control.getViewer().get('canvas').addMarker(element.businessObject.id, 'selectable');
         $scope.control.highlight(element.businessObject.id);
