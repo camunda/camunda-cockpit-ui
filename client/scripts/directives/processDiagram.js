@@ -1,12 +1,11 @@
-/* global define: false, console: false */
+/* global define: false */
 define([
   'angular',
   'jquery',
-  'bpmn/Bpmn',
   'text!./processDiagram.html',
   'jquery-overscroll',
   'jquery-mousewheel'
-], function(angular, $, Bpmn, template) {
+], function(angular, $, template) {
   'use strict';
   /* jshint unused: false */
   var _unique = 0;
@@ -39,7 +38,7 @@ define([
     $scope.$watch('processDiagram', function(newValue) {
       if (newValue && newValue.$loaded !== false) {
         bpmnElements = newValue.bpmnElements;
-        $scope.diagramXML = newValue.bpmn20Xml.bpmn20Xml;
+        $scope.diagramData = newValue.bpmnDefinition;
       }
     });
 
@@ -124,7 +123,7 @@ define([
       if ($scope.control.isLoaded()) {
         if (selection) {
           angular.forEach(selection, function(elementId) {
-            if(bpmnElements[elementId] && bpmnElements[elementId].isSelectable) {
+            if(bpmnElements[elementId]) {
               $scope.control.clearHighlight(elementId);
             }
           });
@@ -132,7 +131,7 @@ define([
 
         if (newSelection) {
           angular.forEach(newSelection, function(elementId) {
-            if(bpmnElements[elementId] && bpmnElements[elementId].isSelectable) {
+            if(bpmnElements[elementId]) {
               $scope.control.highlight(elementId);
             }
           });
