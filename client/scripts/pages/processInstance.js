@@ -171,6 +171,9 @@ define([
     // processInstance
     processData.provide('processInstance', processInstance);
 
+    // modificationInstructions
+    processData.provide('modificationInstructions', []);
+
     // filter
     processData.provide('filter', parseFilterFromUri());
 
