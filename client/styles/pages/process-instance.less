@@ -1,7 +1,7 @@
-@modification-cancel-color:   #E8917C;
+@modification-cancel-color:       #E8917C;
 @modification-start-before-color: lighten(@link-color, 16%);
 @modification-start-after-color:  darken(@link-color, 16%);
-@modification-highlight-color: #FFFDAB;
+@modification-highlight-color:    @highlight-bg;//#FFFDAB;
 
 .ctn-content-bottom > div:first-child {
   position: absolute;
@@ -46,6 +46,10 @@
       }
     }
 
+    .input-group .value-wrapper .set-null {
+      line-height: 1;
+    }
+
     .modification {
       border-left: (@grid-gutter-width / 2) solid;
       .transition(border-color 0.218s ease-in-out);
@@ -78,9 +82,6 @@
 
     .variables {
       margin-top: 5px;
-      .actions {
-        text-align: right;
-      }
       > .row {
         margin-top: 5px;
       }
@@ -146,6 +147,8 @@
 
 
 .modification-confirmation-dialog {
+  cursor: default;
+
   .glyphicon-fire {
     color: @brand-primary;
   }
@@ -183,6 +186,4 @@
   .debug {
     margin-top: (@grid-gutter-width / 2);
   }
-
-  cursor: default;
 }
