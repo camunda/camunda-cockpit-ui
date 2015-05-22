@@ -28,7 +28,7 @@
     "grunt-open": "0.2.0",
     "load-grunt-tasks": "0.2.0",
     "requirejs": "2.1.15",
-    "requirejs-angular-define": "git://github.com/camunda/requirejs-angular-define.git",
+    "requirejs-angular-define": "git://github.com/camunda/requirejs-angular-define.git#v1.1.1-camunda",
     "underscore": "1.5.2"
   }
 }
