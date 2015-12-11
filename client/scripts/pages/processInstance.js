@@ -442,6 +442,9 @@ define([
 
       if(multiInstance) {
         Array.prototype.push.apply(instanceList, multiInstance);
+        if(idx === -1) {
+          idx = activityIds.indexOf(id+'#multiInstanceBody');
+        }
       }
 
       if (!ctrlKey) {
