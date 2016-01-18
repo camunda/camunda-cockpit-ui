@@ -2,7 +2,7 @@
 
 var angular = require('angular'),
     dataDepend = require('angular-data-depend'),
-    camCommons = require('camunda-commons-ui'),
+    camCommons = require('camunda-commons-ui/lib/index'),
 
 
     routes = require('./config/routes'),

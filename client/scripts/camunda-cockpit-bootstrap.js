@@ -29,7 +29,9 @@ define('camunda-cockpit-bootstrap', [
     }));
 
     require(dependencies, function() {
-      camundaCockpitUi(pluginDependencies);
+      require([],function() {
+        camundaCockpitUi(pluginDependencies);
+      });
     });
 
   });

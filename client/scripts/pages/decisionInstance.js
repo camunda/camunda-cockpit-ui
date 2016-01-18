@@ -9,7 +9,7 @@ var angular = require('angular'),
     dataDepend = require('angular-data-depend'),
     camCommons = require('camunda-commons-ui/lib');
 
-  var ngModule = angular.module('cam.cockpit.pages.decisionInstance', [dataDepend.name, camCommons.name]);
+  var ngModule = angular.module('cam.cockpit.pages.decisionInstance', ['dataDepend', camCommons.name]);
 
   var Controller = [
           '$scope', '$rootScope', '$q', 'dataDepend', 'page', 'camAPI', 'decisionInstance', 'Views', 'search',
