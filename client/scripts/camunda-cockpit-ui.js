@@ -5,7 +5,7 @@ window.jQuery = $;
 
 var commons = require('camunda-commons-ui/lib');
 var sdk = require('camunda-bpm-sdk-js/lib/angularjs/index');
-require('angular-data-depend');
+var dataDepend = require('angular-data-depend');
 
 var APP_NAME = 'cam.cockpit';
 
@@ -106,8 +106,10 @@ var angular = require('angular');
 
   module.exports.exposePackages = function(container) {
     container.angular = angular;
+    container.jquery = $;
     container['camunda-commons-ui'] = commons;
     container['camunda-bpm-sdk-js'] = sdk;
+    container['angular-data-depend'] = dataDepend;
   };
 
 
