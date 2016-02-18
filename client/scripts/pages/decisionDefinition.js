@@ -17,8 +17,8 @@ define([
   var module = angular.module('cam.cockpit.pages.decisionDefinition', [dataDepend.name, camCommons.name]);
 
   var Controller = [
-          '$scope', '$rootScope', '$q', 'dataDepend', 'page', 'camAPI', 'decisionDefinition', 'Views', 'search',
-  function($scope,   $rootScope,   $q,   dataDepend,   page,   camAPI,   decisionDefinition,   Views,   search
+          '$scope', '$rootScope', '$q', 'dataDepend', 'page', 'camAPI', 'decisionDefinition', 'Views', 'search', '$interval',
+  function($scope,   $rootScope,   $q,   dataDepend,   page,   camAPI,   decisionDefinition,   Views,   search,   $interval
   ) {
 
     var decisionData = $scope.decisionData = dataDepend.create($scope);
@@ -71,7 +71,21 @@ define([
 
     decisionData.observe(['decisionDefinition'], function(decisionDefinition) {
       $scope.decisionDefinition = decisionDefinition;
+
+      // shrink the decision definition to an acceptable size
+      var el = document.getElementById('cockpit.decisionDefinition.name');
+      el.style.fontSize = window.getComputedStyle(el).getPropertyValue('font-size');
+      var headerWidth = el.parentNode.clientWidth;
+      var shrinking = $interval(function() {
+        var viewWidth = document.getElementById('cockpit.decisionDefinition.view').clientWidth;
+        if(el.clientHeight > 41 || el.clientWidth > headerWidth - viewWidth - 50) {
+          el.style.fontSize = (parseInt(el.style.fontSize, 10) - 1) + 'px';
+        } else {
+          $interval.cancel(shrinking);
+        }
+      }, 0);
     });
+
     decisionData.observe(['allDefinitions'], function(allDefinitions) {
       $scope.allDefinitions = allDefinitions;
     });

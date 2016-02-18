@@ -17,13 +17,26 @@ define([
   var module = angular.module('cam.cockpit.pages.decisionInstance', [dataDepend.name, camCommons.name]);
 
   var Controller = [
-          '$scope', '$rootScope', '$q', 'dataDepend', 'page', 'camAPI', 'decisionInstance', 'Views', 'search',
-  function($scope,   $rootScope,   $q,   dataDepend,   page,   camAPI,   decisionInstance,   Views,   search
+          '$scope', '$rootScope', '$q', 'dataDepend', 'page', 'camAPI', 'decisionInstance', 'Views', 'search', '$interval',
+  function($scope,   $rootScope,   $q,   dataDepend,   page,   camAPI,   decisionInstance,   Views,   search,   $interval
   ) {
 
     $scope.control = {};
 
     $scope.decisionInstance = decisionInstance;
+
+    // shrink the decision instance to an acceptable size
+    var el = document.getElementById('cockpit.decisionInstance.name');
+    el.style.fontSize = window.getComputedStyle(el).getPropertyValue('font-size');
+    var headerWidth = el.parentNode.clientWidth;
+    var shrinking = $interval(function() {
+      var viewWidth = document.getElementById('cockpit.decisionInstance.view').clientWidth;
+      if(el.clientHeight > 41 || el.clientWidth > headerWidth - viewWidth - 50) {
+        el.style.fontSize = (parseInt(el.style.fontSize, 10) - 1) + 'px';
+      } else {
+        $interval.cancel(shrinking);
+      }
+    }, 0);
 
     var decisionData = $scope.decisionData = dataDepend.create($scope);
 

@@ -10,10 +10,23 @@ define([
     var module = angular.module('cam.cockpit.pages.processInstance', [camCommoms.name, dataDepend.name]);
 
   var Controller = [
-          '$scope', '$filter', '$rootScope', '$location', 'search', 'ProcessDefinitionResource', 'ProcessInstanceResource', 'IncidentResource', 'Views', 'Data', 'Transform', 'processInstance', 'dataDepend', 'page', 'breadcrumbTrails',
-  function($scope,   $filter,   $rootScope,   $location,   search,   ProcessDefinitionResource,   ProcessInstanceResource,   IncidentResource,   Views,   Data,   Transform,   processInstance,   dataDepend,   page,   breadcrumbTrails) {
+          '$scope', '$filter', '$rootScope', '$location', 'search', 'ProcessDefinitionResource', 'ProcessInstanceResource', 'IncidentResource', 'Views', 'Data', 'Transform', 'processInstance', 'dataDepend', 'page', 'breadcrumbTrails', '$interval',
+  function($scope,   $filter,   $rootScope,   $location,   search,   ProcessDefinitionResource,   ProcessInstanceResource,   IncidentResource,   Views,   Data,   Transform,   processInstance,   dataDepend,   page,   breadcrumbTrails,   $interval) {
 
     $scope.processInstance = processInstance;
+
+    // shrink the process instance to an acceptable size
+    var el = document.getElementById('cockpit.processInstance.name');
+    el.style.fontSize = window.getComputedStyle(el).getPropertyValue('font-size');
+    var headerWidth = el.parentNode.clientWidth;
+    var shrinking = $interval(function() {
+      var viewWidth = document.getElementById('cockpit.processInstance.view').clientWidth;
+      if(el.clientHeight > 41 || el.clientWidth > headerWidth - viewWidth - 50) {
+        el.style.fontSize = (parseInt(el.style.fontSize, 10) - 1) + 'px';
+      } else {
+        $interval.cancel(shrinking);
+      }
+    }, 0);
 
     var filter;
 
