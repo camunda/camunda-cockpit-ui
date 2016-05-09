@@ -17,8 +17,8 @@ define([
     $scope
   ) {
 
-    var parseValue = function(value) {
-      if(!isNaN(value) && value.trim() !== '') {
+    var parseValue = function(value, enforceString) {
+      if(!isNaN(value) && value.trim() !== '' && !enforceString) {
         // value must be transformed to number
         return +value;
       }
@@ -59,7 +59,7 @@ define([
       if (search.basic) {
         return true;
       }
-      return sanitizeValue(parseValue(search.value.value), search.operator.value.key)
+      return sanitizeValue(parseValue(search.value.value, search.enforceString), search.operator.value.key)
     };
 
     var addSearchToQuery = function(query, search) {
