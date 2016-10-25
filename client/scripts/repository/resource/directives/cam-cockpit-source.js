@@ -44,7 +44,7 @@ define([
 
         $scope.extension = function() {
           if (name) {
-            var extension = (name.match(/\.(\w+)$/) || [,''])[1];
+            var extension = (name.match(/\.([\w-]+)$/) || [,''])[1];
             extension = extension && extension.toLowerCase();
             return Extensions[extension] || extension;
           }
