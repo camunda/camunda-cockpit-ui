@@ -74,7 +74,7 @@ define('camunda-cockpit-ui', [
       UriProvider.replace(':engine', [ '$window', function($window) {
         var uri = $window.location.href;
 
-        var match = uri.match(/\/app\/cockpit\/(\w+)(|\/)/);
+        var match = uri.match(/\/app\/cockpit\/([\w-]+)(|\/)/);
         if (match) {
           return match[1];
         } else {
