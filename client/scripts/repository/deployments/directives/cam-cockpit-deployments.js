@@ -48,11 +48,12 @@ define([
         // control ///////////////////////////////////////////////////////////////////
 
         var control = $scope.control = {};
-        control.addMessage = function (status, msg) {
+        control.addMessage = function (status, msg, unsafe) {
           Notifications.addMessage({
             status: status,
             message: msg,
-            scope: $scope
+            scope: $scope,
+            unsafe: unsafe
           });
         };
 
